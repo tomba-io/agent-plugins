@@ -160,9 +160,69 @@
   ],
   "resources": [
     {
+      "uri": "tomba://account",
+      "name": "Account Info",
+      "description": "Current account information and usage"
+    },
+    {
+      "uri": "tomba://domain/{domain}/stats",
+      "name": "Domain Stats",
+      "description": "Email statistics for a domain"
+    },
+    {
       "uri": "tomba://usage",
-      "name": "API Usage",
-      "description": "Track API usage and remaining quota"
+      "name": "Usage Stats",
+      "description": "API usage statistics"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "lead-research",
+      "description": "Research a company and find key contacts for outreach"
+    },
+    {
+      "name": "competitor-analysis",
+      "description": "Analyze competitors including tech stack, team structure, and contacts"
+    },
+    {
+      "name": "email-verification",
+      "description": "Verify a list of email addresses"
+    },
+    {
+      "name": "find-person",
+      "description": "Find a specific person's email at a company"
+    },
+    {
+      "name": "content-outreach",
+      "description": "Find authors and content creators for outreach campaigns"
+    },
+    {
+      "name": "account-based-marketing",
+      "description": "Build comprehensive ABM campaigns with multi-stakeholder targeting"
+    },
+    {
+      "name": "investor-research",
+      "description": "Research VCs/investors, portfolio companies, and find decision makers"
+    },
+    {
+      "name": "hiring-outreach",
+      "description": "Source candidates from target companies for recruiting"
+    },
+    {
+      "name": "partnership-research",
+      "description": "Identify strategic partners and integration opportunities"
+    },
+    {
+      "name": "market-research",
+      "description": "Conduct industry analysis across multiple companies"
+    },
+    {
+      "name": "sales-territory-mapping",
+      "description": "Build territory plans with account prioritization and stakeholder mapping"
+    },
+    {
+      "name": "due-diligence",
+      "description": "Comprehensive company analysis for investment, acquisition, or partnership"
     }
   ]
 }

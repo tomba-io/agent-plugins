@@ -23,15 +23,15 @@
 
 ## Supported Platforms
 
-| Platform | Plugin Path | Auth Method |
-|----------|-------------|-------------|
-| Generic / Multi-agent | `.agents/plugins/` | Bearer token or API headers |
-| Claude (Desktop & Code) | `.claude-plugin/` | Bearer token |
-| Cursor AI | `.cursor-plugin/` | `X-Tomba-Key` / `X-Tomba-Secret` headers |
-| VS Code (GitHub Copilot) | `.vscode/` | Bearer token (prompted) |
-| Windsurf | `.windsurf-plugin/` | Bearer token |
-| Zed | `.zed-plugin/` | Bearer token |
-| ChatGPT (OpenAI API) | `.chatgpt-plugin/` | Bearer token |
+| Platform                 | Plugin Path         | Auth Method                              |
+| ------------------------ | ------------------- | ---------------------------------------- |
+| Generic / Multi-agent    | `.agents/plugins/`  | Bearer token or API headers              |
+| Claude (Desktop & Code)  | `.claude-plugin/`   | Bearer token                             |
+| Cursor AI                | `.cursor-plugin/`   | `X-Tomba-Key` / `X-Tomba-Secret` headers |
+| VS Code (GitHub Copilot) | `.vscode/`          | Bearer token (prompted)                  |
+| Windsurf                 | `.windsurf-plugin/` | Bearer token                             |
+| Zed                      | `.zed-plugin/`      | Bearer token                             |
+| ChatGPT (OpenAI API)     | `.chatgpt-plugin/`  | Bearer token                             |
 
 ## MCP Server
 
@@ -41,22 +41,49 @@
 
 ## Available Tools
 
-| Tool | Description |
-|------|-------------|
-| `domain_search` | Find all emails for a company domain |
-| `email_finder` | Discover a person's email via name + company |
-| `email_verifier` | Validate email deliverability, MX, SMTP |
-| `email_enrichment` | Get full contact and company profiles |
-| `email_count` | Count public emails for a domain |
-| `author_finder` | Extract author email from article URLs |
-| `linkedin_finder` | Convert LinkedIn profiles to verified emails |
-| `phone_finder` | Retrieve validated phone numbers |
-| `phone_validator` | Verify phone numbers with carrier details |
-| `technology_finder` | Identify website technology stacks |
-| `similar_finder` | Discover competitor/lookalike companies |
-| `companies_search` | Query company database by attributes |
+| Tool                | Description                                  |
+| ------------------- | -------------------------------------------- |
+| `domain_search`     | Find all emails for a company domain         |
+| `email_finder`      | Discover a person's email via name + company |
+| `email_verifier`    | Validate email deliverability, MX, SMTP      |
+| `email_enrichment`  | Get full contact and company profiles        |
+| `email_count`       | Count public emails for a domain             |
+| `author_finder`     | Extract author email from article URLs       |
+| `linkedin_finder`   | Convert LinkedIn profiles to verified emails |
+| `phone_finder`      | Retrieve validated phone numbers             |
+| `phone_validator`   | Verify phone numbers with carrier details    |
+| `technology_finder` | Identify website technology stacks           |
+| `similar_finder`    | Discover competitor/lookalike companies      |
+| `companies_search`  | Query company database by attributes         |
 
 All tool definitions are maintained in [`shared/tools.json`](shared/tools.json) as a single source of truth.
+
+## Resources
+
+| Resource     | URI                             | Description                           |
+| ------------ | ------------------------------- | ------------------------------------- |
+| Account Info | `tomba://account`               | Current account information and usage |
+| Domain Stats | `tomba://domain/{domain}/stats` | Email statistics for a domain         |
+| Usage Stats  | `tomba://usage`                 | API usage statistics                  |
+
+## Prompts
+
+12 pre-built prompts for common workflows:
+
+| Prompt                    | Description                                                                |
+| ------------------------- | -------------------------------------------------------------------------- |
+| `lead-research`           | Research a company and find key contacts for outreach                      |
+| `competitor-analysis`     | Analyze competitors including tech stack, team structure, and contacts     |
+| `email-verification`      | Verify a list of email addresses                                           |
+| `find-person`             | Find a specific person's email at a company                                |
+| `content-outreach`        | Find authors and content creators for outreach campaigns                   |
+| `account-based-marketing` | Build comprehensive ABM campaigns with multi-stakeholder targeting         |
+| `investor-research`       | Research VCs/investors, portfolio companies, and find decision makers      |
+| `hiring-outreach`         | Source candidates from target companies for recruiting                     |
+| `partnership-research`    | Identify strategic partners and integration opportunities                  |
+| `market-research`         | Conduct industry analysis across multiple companies                        |
+| `sales-territory-mapping` | Build territory plans with account prioritization and stakeholder mapping  |
+| `due-diligence`           | Comprehensive company analysis for investment, acquisition, or partnership |
 
 ## Authentication
 
@@ -108,6 +135,7 @@ Add to `claude_desktop_config.json`:
   }
 }
 ```
+
 </details>
 
 <details>
@@ -119,6 +147,7 @@ Run:
 claude mcp add tomba --transport http --url https://mcp.tomba.io/mcp \
   --header "Authorization: Bearer YOUR_BASE64_TOKEN"
 ```
+
 </details>
 
 <details>
@@ -140,6 +169,7 @@ Add to `.cursor/mcp.json`:
   }
 }
 ```
+
 </details>
 
 <details>
@@ -168,6 +198,7 @@ Add to `.vscode/mcp.json`:
   }
 }
 ```
+
 </details>
 
 <details>
@@ -188,6 +219,7 @@ Add to Windsurf MCP settings (`~/.codeium/windsurf/mcp_config.json`):
   }
 }
 ```
+
 </details>
 
 <details>
@@ -209,6 +241,7 @@ Add to Zed `settings.json`:
   }
 }
 ```
+
 </details>
 
 <details>
@@ -236,6 +269,7 @@ curl https://api.openai.com/v1/responses \
     "input": "Find all emails for tomba.io"
   }'
 ```
+
 </details>
 
 ## Tomba CLI

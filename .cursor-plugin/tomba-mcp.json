@@ -153,10 +153,32 @@
     }
   },
   "resources": {
+    "tomba://account": {
+      "name": "Account Info",
+      "description": "Current account information and usage"
+    },
+    "tomba://domain/{domain}/stats": {
+      "name": "Domain Stats",
+      "description": "Email statistics for a domain"
+    },
     "tomba://usage": {
-      "name": "API Usage",
-      "description": "Track Tomba API usage and remaining quota"
+      "name": "Usage Stats",
+      "description": "API usage statistics"
     }
+  },
+  "prompts": {
+    "lead-research": { "description": "Research a company and find key contacts for outreach" },
+    "competitor-analysis": { "description": "Analyze competitors including tech stack, team structure, and contacts" },
+    "email-verification": { "description": "Verify a list of email addresses" },
+    "find-person": { "description": "Find a specific person's email at a company" },
+    "content-outreach": { "description": "Find authors and content creators for outreach campaigns" },
+    "account-based-marketing": { "description": "Build comprehensive ABM campaigns with multi-stakeholder targeting" },
+    "investor-research": { "description": "Research VCs/investors, portfolio companies, and find decision makers" },
+    "hiring-outreach": { "description": "Source candidates from target companies for recruiting" },
+    "partnership-research": { "description": "Identify strategic partners and integration opportunities" },
+    "market-research": { "description": "Conduct industry analysis across multiple companies" },
+    "sales-territory-mapping": { "description": "Build territory plans with account prioritization and stakeholder mapping" },
+    "due-diligence": { "description": "Comprehensive company analysis for investment, acquisition, or partnership" }
   },
   "setup": {
     "environment_variables": {
