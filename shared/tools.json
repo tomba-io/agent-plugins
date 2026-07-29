@@ -14,9 +14,18 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "domain": { "type": "string", "description": "Target domain to search" },
-          "limit": { "type": "integer", "description": "Maximum number of results" },
-          "department": { "type": "string", "description": "Filter by department" }
+          "domain": {
+            "type": "string",
+            "description": "Target domain to search"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Maximum number of results"
+          },
+          "department": {
+            "type": "string",
+            "description": "Filter by department"
+          }
         },
         "required": ["domain"]
       }
@@ -27,10 +36,19 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "first_name": { "type": "string", "description": "Person's first name" },
-          "last_name": { "type": "string", "description": "Person's last name" },
+          "first_name": {
+            "type": "string",
+            "description": "Person's first name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Person's last name"
+          },
           "domain": { "type": "string", "description": "Company domain" },
-          "full_name": { "type": "string", "description": "Full name if first/last unavailable" }
+          "full_name": {
+            "type": "string",
+            "description": "Full name if first/last unavailable"
+          }
         },
         "required": ["first_name", "last_name", "domain"]
       }
@@ -41,8 +59,14 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "email": { "type": "string", "description": "Email address to verify" },
-          "smtp_check": { "type": "boolean", "description": "Enable SMTP verification" }
+          "email": {
+            "type": "string",
+            "description": "Email address to verify"
+          },
+          "smtp_check": {
+            "type": "boolean",
+            "description": "Enable SMTP verification"
+          }
         },
         "required": ["email"]
       }
@@ -53,8 +77,14 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "email": { "type": "string", "description": "Email address to enrich" },
-          "include_sources": { "type": "boolean", "description": "Include data source origins" }
+          "email": {
+            "type": "string",
+            "description": "Email address to enrich"
+          },
+          "include_sources": {
+            "type": "boolean",
+            "description": "Include data source origins"
+          }
         },
         "required": ["email"]
       }
@@ -66,7 +96,10 @@
         "type": "object",
         "properties": {
           "domain": { "type": "string", "description": "Target domain" },
-          "type": { "type": "string", "description": "Filter by email category" }
+          "type": {
+            "type": "string",
+            "description": "Filter by email category"
+          }
         },
         "required": ["domain"]
       }
@@ -78,7 +111,10 @@
         "type": "object",
         "properties": {
           "url": { "type": "string", "description": "Article or content URL" },
-          "author_name": { "type": "string", "description": "Specific author name to target" }
+          "author_name": {
+            "type": "string",
+            "description": "Specific author name to target"
+          }
         },
         "required": ["url"]
       }
@@ -89,8 +125,14 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "linkedin_url": { "type": "string", "description": "LinkedIn profile URL" },
-          "company_domain": { "type": "string", "description": "Company domain for validation" }
+          "linkedin_url": {
+            "type": "string",
+            "description": "LinkedIn profile URL"
+          },
+          "company_domain": {
+            "type": "string",
+            "description": "Company domain for validation"
+          }
         },
         "required": ["linkedin_url"]
       }
@@ -102,9 +144,18 @@
         "type": "object",
         "properties": {
           "email": { "type": "string", "description": "Email address" },
-          "first_name": { "type": "string", "description": "Person's first name" },
-          "last_name": { "type": "string", "description": "Person's last name" },
-          "company": { "type": "string", "description": "Company name or domain" }
+          "first_name": {
+            "type": "string",
+            "description": "Person's first name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Person's last name"
+          },
+          "company": {
+            "type": "string",
+            "description": "Company name or domain"
+          }
         }
       }
     },
@@ -114,8 +165,14 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "phone": { "type": "string", "description": "Phone number to validate" },
-          "country_code": { "type": "string", "description": "ISO country code" }
+          "phone": {
+            "type": "string",
+            "description": "Phone number to validate"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "ISO country code"
+          }
         },
         "required": ["phone"]
       }
@@ -137,8 +194,14 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "domain": { "type": "string", "description": "Reference company domain" },
-          "limit": { "type": "integer", "description": "Maximum results (default: 10, max: 50)" }
+          "domain": {
+            "type": "string",
+            "description": "Reference company domain"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Maximum results (default: 10, max: 50)"
+          }
         },
         "required": ["domain"]
       }
@@ -149,10 +212,22 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "query": { "type": "string", "description": "Natural language search query" },
-          "page": { "type": "integer", "description": "Pagination page number" },
-          "limit": { "type": "integer", "description": "Results per page (default: 50, max: 100)" },
-          "filters": { "type": "object", "description": "Advanced filters: country, industry, employee range, revenue, technologies, city, founding year" }
+          "query": {
+            "type": "string",
+            "description": "Natural language search query"
+          },
+          "page": {
+            "type": "integer",
+            "description": "Pagination page number"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Results per page (default: 50, max: 100)"
+          },
+          "filters": {
+            "type": "object",
+            "description": "Advanced filters: country, industry, employee range, revenue, technologies, city, founding year"
+          }
         },
         "required": ["query"]
       }

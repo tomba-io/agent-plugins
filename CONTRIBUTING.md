@@ -4,7 +4,7 @@ Thanks for your interest in contributing! This guide will help you add new platf
 
 ## Project Structure
 
-```
+```text
 agent-plugins/
 ├── shared/
 │   └── tools.json              # Shared tool definitions (single source of truth)
@@ -77,6 +77,6 @@ If Tomba adds new MCP tools or changes parameters:
 
 ## Questions?
 
-- Tomba API docs: https://docs.tomba.io
-- MCP docs: https://docs.tomba.io/llm/remote-mcp/introduction
+- Tomba API docs: <https://docs.tomba.io>
+- MCP docs: <https://docs.tomba.io/llm/remote-mcp/introduction>
 - Issues: Open a GitHub issue
