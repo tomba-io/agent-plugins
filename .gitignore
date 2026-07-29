@@ -18,7 +18,10 @@ desktop.ini
 *~
 
 # Claude Code
-.claude/settings.local.json
+.claude/
+
+# Cursor skills cache
+.cursor/skills/
 
 # Node
 node_modules/

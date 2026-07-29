@@ -1,0 +1,62 @@
+{
+  "name": "tomba-agent-plugins",
+  "version": "1.0.0",
+  "description": "Agent plugins for Tomba remote MCP server - Email discovery, verification, enrichment, and company research across multiple AI coding assistants",
+  "author": "Tomba Technology, Inc.",
+  "license": "MIT",
+  "homepage": "https://tomba.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomba-io/agent-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tomba-io/agent-plugins/issues"
+  },
+  "keywords": [
+    "tomba",
+    "mcp",
+    "model-context-protocol",
+    "email-finder",
+    "email-verifier",
+    "email-enrichment",
+    "contact-intelligence",
+    "lead-generation",
+    "company-research",
+    "agent-plugin",
+    "claude",
+    "cursor",
+    "vscode",
+    "windsurf",
+    "zed",
+    "chatgpt",
+    "codeium",
+    "gemini"
+  ],
+  "scripts": {
+    "lint:json": "prettier --check '**/*.json' --ignore-path .gitignore",
+    "lint:md": "markdownlint '**/*.md' --ignore node_modules",
+    "format:md": "prettier --write '**/*.md' --ignore-path .gitignore",
+    "format:json": "prettier --write '**/*.json' --ignore-path .gitignore",
+    "format": "npm run format:json && npm run format:md",
+    "lint": "npm run lint:json && npm run lint:md",
+    "test": "npm run lint"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.44.0",
+    "prettier": "^3.5.3"
+  },
+  "files": [
+    "shared/",
+    ".agents/",
+    ".claude-plugin/",
+    ".cursor-plugin/",
+    ".windsurf-plugin/",
+    ".zed-plugin/",
+    ".chatgpt-plugin/",
+    ".codeium-plugin/",
+    ".gemini-plugin/",
+    ".vscode/",
+    "LICENSE",
+    "README.md"
+  ]
+}
