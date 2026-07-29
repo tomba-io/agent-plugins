@@ -42,7 +42,7 @@
     "test": "npm run lint"
   },
   "devDependencies": {
-    "markdownlint-cli": "^0.44.0",
+    "markdownlint-cli": "^0.48.0",
     "prettier": "^3.5.3"
   },
   "files": [
