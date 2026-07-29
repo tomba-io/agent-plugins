@@ -1,0 +1,30 @@
+{
+  "name": "tomba-contact-intelligence",
+  "version": "1.0.0",
+  "description": "Tomba Contact Intelligence MCP plugin for Gemini CLI - Email discovery, verification, enrichment, and company research",
+  "mcpServers": {
+    "tomba": {
+      "url": "https://mcp.tomba.io/mcp",
+      "transport": "http",
+      "headers": {
+        "Authorization": "Bearer ${TOMBA_BEARER_TOKEN}"
+      }
+    }
+  },
+  "tools_ref": "../shared/tools.json",
+  "setup": {
+    "environment_variables": {
+      "TOMBA_BEARER_TOKEN": {
+        "description": "Base64 encoded string of your Tomba API key and secret (format: base64(ta_api_key:ts_secret_key))",
+        "required": true
+      }
+    },
+    "instructions": [
+      "1. Sign up at https://app.tomba.io/auth/register",
+      "2. Get your API key (ta_xxx) and secret (ts_xxx) from https://app.tomba.io/api",
+      "3. Generate bearer token: echo -n 'ta_your_key:ts_your_secret' | base64",
+      "4. Add the mcpServers config to your ~/.gemini/settings.json",
+      "5. Restart Gemini CLI to activate the MCP server"
+    ]
+  }
+}

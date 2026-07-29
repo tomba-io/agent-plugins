@@ -16,7 +16,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="License: MIT"></a>
   <a href="https://github.com/tomba-io/tomba"><img src="https://img.shields.io/badge/CLI-tomba--io%2Ftomba-orange?style=flat-square" alt="Tomba CLI"></a>
   <img src="https://img.shields.io/badge/Tools-12-purple?style=flat-square" alt="12 Tools">
-  <img src="https://img.shields.io/badge/Platforms-7-teal?style=flat-square" alt="7 Platforms">
+  <img src="https://img.shields.io/badge/Platforms-9-teal?style=flat-square" alt="9 Platforms">
 </p>
 
 ---
@@ -32,6 +32,8 @@
 | Windsurf                 | `.windsurf-plugin/` | Bearer token                             |
 | Zed                      | `.zed-plugin/`      | Bearer token                             |
 | ChatGPT (OpenAI API)     | `.chatgpt-plugin/`  | Bearer token                             |
+| Codeium                  | `.codeium-plugin/`  | Bearer token                             |
+| Gemini CLI               | `.gemini-plugin/`   | Bearer token                             |
 
 ## MCP Server
 
@@ -97,13 +99,13 @@ echo -n 'ta_your_api_key:ts_your_secret_key' | base64
 
 Use the result as:
 
-```
+```text
 Authorization: Bearer <base64_token>
 ```
 
 ### Option 2: API Headers
 
-```
+```text
 X-Tomba-Key: ta_your_api_key
 X-Tomba-Secret: ts_your_secret_key
 ```
@@ -268,6 +270,47 @@ curl https://api.openai.com/v1/responses \
     ],
     "input": "Find all emails for tomba.io"
   }'
+```
+
+</details>
+
+<details>
+<summary><strong>Codeium</strong></summary>
+
+Add to Codeium MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "tomba": {
+      "url": "https://mcp.tomba.io/mcp",
+      "transport": "http",
+      "headers": {
+        "Authorization": "Bearer YOUR_BASE64_TOKEN"
+      }
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><strong>Gemini CLI</strong></summary>
+
+Add to `~/.gemini/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "tomba": {
+      "url": "https://mcp.tomba.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_BASE64_TOKEN"
+      }
+    }
+  }
+}
 ```
 
 </details>
