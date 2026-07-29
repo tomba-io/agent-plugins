@@ -1,0 +1,43 @@
+{
+  "name": "tomba-contact-intelligence",
+  "version": "1.0.0",
+  "description": "Tomba Contact Intelligence MCP plugin for ChatGPT / OpenAI Responses API",
+  "openai": {
+    "tool_type": "mcp",
+    "server_label": "tomba",
+    "server_url": "https://mcp.tomba.io/mcp",
+    "headers": {
+      "Authorization": "Bearer ${TOMBA_BEARER_TOKEN}"
+    },
+    "require_approval": "never",
+    "allowed_tools": [
+      "domain_search",
+      "email_finder",
+      "email_verifier",
+      "email_enrichment",
+      "email_count",
+      "author_finder",
+      "linkedin_finder",
+      "phone_finder",
+      "phone_validator",
+      "technology_finder",
+      "similar_finder",
+      "companies_search"
+    ]
+  },
+  "tools_ref": "../shared/tools.json",
+  "setup": {
+    "environment_variables": {
+      "TOMBA_BEARER_TOKEN": {
+        "description": "Base64 encoded string of your Tomba API key and secret (format: base64(ta_api_key:ts_secret_key))",
+        "required": true
+      }
+    },
+    "instructions": [
+      "1. Sign up at https://app.tomba.io/auth/register",
+      "2. Get your API key (ta_xxx) and secret (ts_xxx) from https://app.tomba.io/api",
+      "3. Generate bearer token: echo -n 'ta_your_key:ts_your_secret' | base64",
+      "4. Use the OpenAI Responses API with MCP tool type to connect"
+    ]
+  }
+}

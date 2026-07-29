@@ -1,0 +1,193 @@
+{
+  "name": "tomba-contact-intelligence",
+  "version": "1.0.0",
+  "description": "Tomba Contact Intelligence MCP plugin for Claude - Email discovery, verification, enrichment, and company research",
+  "mcpServers": {
+    "tomba": {
+      "url": "https://mcp.tomba.io/mcp",
+      "headers": {
+        "Authorization": "Bearer ${TOMBA_BEARER_TOKEN}"
+      }
+    }
+  },
+  "skills": [
+    {
+      "name": "tomba-contact-intelligence",
+      "description": "Use Tomba MCP tools for contact discovery, verification, enrichment, and company research.",
+      "triggers": [
+        "find email",
+        "verify email",
+        "enrich email",
+        "domain search",
+        "linkedin email",
+        "find phone",
+        "validate phone",
+        "company search",
+        "technology stack",
+        "similar companies",
+        "author email",
+        "contact intelligence"
+      ]
+    }
+  ],
+  "tools_ref": "../shared/tools.json",
+  "tools": {
+    "domain_search": {
+      "description": "Search for email addresses associated with a domain",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Target domain to search" },
+          "limit": { "type": "integer", "description": "Maximum number of results" },
+          "department": { "type": "string", "description": "Filter by department" }
+        },
+        "required": ["domain"]
+      }
+    },
+    "email_finder": {
+      "description": "Find a person's email address by name and company",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "first_name": { "type": "string", "description": "Person's first name" },
+          "last_name": { "type": "string", "description": "Person's last name" },
+          "domain": { "type": "string", "description": "Company domain" },
+          "full_name": { "type": "string", "description": "Full name if first/last unavailable" }
+        },
+        "required": ["first_name", "last_name", "domain"]
+      }
+    },
+    "email_verifier": {
+      "description": "Verify if an email address is valid and deliverable",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "description": "Email address to verify" },
+          "smtp_check": { "type": "boolean", "description": "Enable SMTP verification" }
+        },
+        "required": ["email"]
+      }
+    },
+    "email_enrichment": {
+      "description": "Enrich an email with additional contact and company information",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "description": "Email address to enrich" },
+          "include_sources": { "type": "boolean", "description": "Include data source origins" }
+        },
+        "required": ["email"]
+      }
+    },
+    "email_count": {
+      "description": "Get the count of emails available for a domain",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Target domain" },
+          "type": { "type": "string", "description": "Filter by email category" }
+        },
+        "required": ["domain"]
+      }
+    },
+    "author_finder": {
+      "description": "Find the email address of an article's author",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "description": "Article or content URL" },
+          "author_name": { "type": "string", "description": "Specific author name to target" }
+        },
+        "required": ["url"]
+      }
+    },
+    "linkedin_finder": {
+      "description": "Find email address from a LinkedIn profile URL",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "linkedin_url": { "type": "string", "description": "LinkedIn profile URL" },
+          "company_domain": { "type": "string", "description": "Company domain for validation" }
+        },
+        "required": ["linkedin_url"]
+      }
+    },
+    "phone_finder": {
+      "description": "Find phone numbers for an email, domain, or LinkedIn profile",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "description": "Email address" },
+          "first_name": { "type": "string", "description": "Person's first name" },
+          "last_name": { "type": "string", "description": "Person's last name" },
+          "company": { "type": "string", "description": "Company name or domain" }
+        }
+      }
+    },
+    "phone_validator": {
+      "description": "Validate and get information about a phone number",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "phone": { "type": "string", "description": "Phone number to validate" },
+          "country_code": { "type": "string", "description": "ISO country code" }
+        },
+        "required": ["phone"]
+      }
+    },
+    "technology_finder": {
+      "description": "Discover technologies used by a website",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Target website domain" }
+        },
+        "required": ["domain"]
+      }
+    },
+    "similar_finder": {
+      "description": "Find companies similar to a given domain",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Reference company domain" },
+          "limit": { "type": "integer", "description": "Maximum results (default: 10, max: 50)" }
+        },
+        "required": ["domain"]
+      }
+    },
+    "companies_search": {
+      "description": "Search for companies in the Tomba database",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Natural language search query" },
+          "page": { "type": "integer", "description": "Pagination page number" },
+          "limit": { "type": "integer", "description": "Results per page (default: 50, max: 100)" },
+          "filters": { "type": "object", "description": "Advanced filters: country, industry, employee range, revenue, technologies, city, founding year" }
+        },
+        "required": ["query"]
+      }
+    }
+  },
+  "resources": {
+    "tomba://usage": {
+      "name": "API Usage",
+      "description": "Track Tomba API usage and remaining quota"
+    }
+  },
+  "setup": {
+    "environment_variables": {
+      "TOMBA_BEARER_TOKEN": {
+        "description": "Base64 encoded string of your Tomba API key and secret (format: base64(ta_api_key:ts_secret_key))",
+        "required": true
+      }
+    },
+    "instructions": [
+      "1. Sign up at https://app.tomba.io/auth/register",
+      "2. Get your API key (ta_xxx) and secret (ts_xxx) from https://app.tomba.io/api",
+      "3. Generate bearer token: echo -n 'ta_your_key:ts_your_secret' | base64",
+      "4. Set TOMBA_BEARER_TOKEN environment variable with the base64 result"
+    ]
+  }
+}

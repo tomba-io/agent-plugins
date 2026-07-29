@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "tomba-mcp-tools",
+  "version": "1.0.0",
+  "description": "Shared tool definitions for Tomba MCP server plugins",
+  "mcp": {
+    "url": "https://mcp.tomba.io/mcp",
+    "transport": "http"
+  },
+  "tools": [
+    {
+      "name": "domain_search",
+      "description": "Search for email addresses associated with a domain",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Target domain to search" },
+          "limit": { "type": "integer", "description": "Maximum number of results" },
+          "department": { "type": "string", "description": "Filter by department" }
+        },
+        "required": ["domain"]
+      }
+    },
+    {
+      "name": "email_finder",
+      "description": "Find a person's email address by name and company",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "first_name": { "type": "string", "description": "Person's first name" },
+          "last_name": { "type": "string", "description": "Person's last name" },
+          "domain": { "type": "string", "description": "Company domain" },
+          "full_name": { "type": "string", "description": "Full name if first/last unavailable" }
+        },
+        "required": ["first_name", "last_name", "domain"]
+      }
+    },
+    {
+      "name": "email_verifier",
+      "description": "Verify if an email address is valid and deliverable",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "description": "Email address to verify" },
+          "smtp_check": { "type": "boolean", "description": "Enable SMTP verification" }
+        },
+        "required": ["email"]
+      }
+    },
+    {
+      "name": "email_enrichment",
+      "description": "Enrich an email with additional contact and company information",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "description": "Email address to enrich" },
+          "include_sources": { "type": "boolean", "description": "Include data source origins" }
+        },
+        "required": ["email"]
+      }
+    },
+    {
+      "name": "email_count",
+      "description": "Get the count of emails available for a domain",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Target domain" },
+          "type": { "type": "string", "description": "Filter by email category" }
+        },
+        "required": ["domain"]
+      }
+    },
+    {
+      "name": "author_finder",
+      "description": "Find the email address of an article's author",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "description": "Article or content URL" },
+          "author_name": { "type": "string", "description": "Specific author name to target" }
+        },
+        "required": ["url"]
+      }
+    },
+    {
+      "name": "linkedin_finder",
+      "description": "Find email address from a LinkedIn profile URL",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "linkedin_url": { "type": "string", "description": "LinkedIn profile URL" },
+          "company_domain": { "type": "string", "description": "Company domain for validation" }
+        },
+        "required": ["linkedin_url"]
+      }
+    },
+    {
+      "name": "phone_finder",
+      "description": "Find phone numbers for an email, domain, or LinkedIn profile",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "description": "Email address" },
+          "first_name": { "type": "string", "description": "Person's first name" },
+          "last_name": { "type": "string", "description": "Person's last name" },
+          "company": { "type": "string", "description": "Company name or domain" }
+        }
+      }
+    },
+    {
+      "name": "phone_validator",
+      "description": "Validate and get information about a phone number",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "phone": { "type": "string", "description": "Phone number to validate" },
+          "country_code": { "type": "string", "description": "ISO country code" }
+        },
+        "required": ["phone"]
+      }
+    },
+    {
+      "name": "technology_finder",
+      "description": "Discover technologies used by a website",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Target website domain" }
+        },
+        "required": ["domain"]
+      }
+    },
+    {
+      "name": "similar_finder",
+      "description": "Find companies similar to a given domain",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "description": "Reference company domain" },
+          "limit": { "type": "integer", "description": "Maximum results (default: 10, max: 50)" }
+        },
+        "required": ["domain"]
+      }
+    },
+    {
+      "name": "companies_search",
+      "description": "Search for companies in the Tomba database",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Natural language search query" },
+          "page": { "type": "integer", "description": "Pagination page number" },
+          "limit": { "type": "integer", "description": "Results per page (default: 50, max: 100)" },
+          "filters": { "type": "object", "description": "Advanced filters: country, industry, employee range, revenue, technologies, city, founding year" }
+        },
+        "required": ["query"]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "tomba://usage",
+      "name": "API Usage",
+      "description": "Track API usage and remaining quota"
+    }
+  ]
+}

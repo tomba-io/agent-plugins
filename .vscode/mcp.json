@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "id": "tomba-bearer",
+      "type": "promptString",
+      "description": "Tomba Bearer Token (base64 of ta_api_key:ts_secret_key)",
+      "password": true
+    }
+  ],
+  "servers": {
+    "tomba": {
+      "type": "http",
+      "url": "https://mcp.tomba.io/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:tomba-bearer}"
+      }
+    }
+  }
+}
